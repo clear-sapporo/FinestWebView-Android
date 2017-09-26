@@ -1216,10 +1216,10 @@ public class FinestWebViewActivity extends AppCompatActivity
 
         MailTo mt = MailTo.parse(url);
 
-        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 
         emailIntent.setType("text/html");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { mt.getTo() });
+        emailIntent.setData(Uri.parse("mailto:" + mt.getTo()));
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, mt.getSubject());
         emailIntent.putExtra(Intent.EXTRA_CC, mt.getCc());
         emailIntent.putExtra(Intent.EXTRA_TEXT, mt.getBody());
